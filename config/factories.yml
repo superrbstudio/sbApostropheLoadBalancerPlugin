@@ -1,0 +1,10 @@
+all:
+  storage:
+    class: sfPDOSessionStorage
+    param:
+      db_table:    session              # Name of the table storing the sessions
+      database:    doctrine             # Name of the database connection to use
+      # Optional parameters
+      db_id_col:   sess_id              # Name of the column storing the session id
+      db_data_col: sess_data            # Name of the column storing the session data
+      db_time_col: sess_time            # Name of the column storing the session timestamp
