@@ -1,0 +1,5 @@
+Session:
+  columns:
+    sess_id:   { type: string(64), primary: true }
+    sess_data: { type: clob }
+    sess_time: { type: integer(4) }
