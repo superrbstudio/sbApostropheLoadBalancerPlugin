@@ -1,20 +1,13 @@
 all:
   storage:
-    class: sfCacheSessionStorage
+    class: sfPDOSessionStorage
     param:
-      session_name: sfproject #[required] name of session to use
-      session_cookie_path: / #[required] cookie path
-      session_cookie_domain: superrb.com #[required] cookie domain
-      session_cookie_lifetime: +30 days #[required] liftime of cookie
-      session_cookie_secure: false #[required] send only if secure connection
-      session_cookie_http_only: true #[required] accessible only via http protocol
-      cache:
-        class: sfMemcacheCache #[required] define the cache strategy
-        param:
-          servers: # Array of servers
-            servers:
-              localhost:
-                host: 127.0.0.1
+      db_table:    session              # Name of the table storing the sessions
+      database:    doctrine             # Name of the database connection to use
+      # Optional parameters
+      db_id_col:   sess_id              # Name of the column storing the session id
+      db_data_col: sess_data            # Name of the column storing the session data
+      db_time_col: sess_time            # Name of the column storing the session timestamp
   view_cache:
     class: sfMemcacheCache #[required] define the cache strategy
     param:
