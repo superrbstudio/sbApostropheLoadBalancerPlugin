@@ -1,0 +1,55 @@
+#all:
+#  storage:
+#    class: sfPDOSessionStorage
+#    param:
+#      db_table:    session              # Name of the table storing the sessions
+#      database:    doctrine             # Name of the database connection to use
+#      # Optional parameters
+#      db_id_col:   sess_id              # Name of the column storing the session id
+#      db_data_col: sess_data            # Name of the column storing the session data
+#      db_time_col: sess_time            # Name of the column storing the session timestamp
+all:
+
+  # Store the session in Memcached
+  storage:
+    class: sfCacheSessionStorage
+    param:
+      session_name: superrb #[required] name of session to use
+      session_cookie_path: / #[required] cookie path
+      session_cookie_domain: superrb.dev #[required] cookie domain
+      session_cookie_lifetime: +30 days #[required] liftime of cookie
+      session_cookie_secure: false #[required] send only if secure connection
+      session_cookie_http_only: true #[required] accessible only via http protocol
+      cache:
+        class: sfMemcacheCache #[required] define the cache strategy
+        param:
+          storeCacheInfo: true
+          lifetime: 86400 #[required] The lifetime of the session
+          prefix: 's_'
+          servers: # Array of servers
+            localserver:
+              host: localhost # hostname or IP of mamcache server
+              port: 11211 # default memcache port
+            #server_1:
+            #  host: server1.example.com #[required] hostname or IP of server
+            #  port: 11211
+            #server_2:
+            #  host: server2.example.com #[required] hostname or IP of server
+            #  port: 11211
+
+  # Store the view cache in Memcached
+  view_cache:
+    class: sfMemcacheCache #[required] define the cache strategy
+    param:
+      automaticCleaningFactor: 0
+      cacheDir:                %SF_TEMPLATE_CACHE_DIR%
+      servers: # Array of servers
+        localserver:
+          host: localhost # hostname or IP of mamcache server
+          port: 11211 # default memcache port
+        #server_1:
+        #  host: server1.example.com #[required] hostname or IP of server
+        #  port: 11211
+        #server_2:
+        #  host: server2.example.com #[required] hostname or IP of server
+        #  port: 11211
