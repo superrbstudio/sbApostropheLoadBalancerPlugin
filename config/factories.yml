@@ -6,5 +6,5 @@ all:
       database:    doctrine        # Name of the database connection to use
       # Optional parameters
       db_id_col:   id              # Name of the column storing the session id
-      db_data_col: data            # Name of the column storing the session data
+      db_data_col: session_data    # Name of the column storing the session data
       db_time_col: time            # Name of the column storing the session timestamp

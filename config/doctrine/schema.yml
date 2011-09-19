@@ -1,5 +1,5 @@
 sbSession:
   columns:
-    id:   { type: string(64), primary: true }
-    data: { type: clob }	
-    time: { type: integer(4) }
+    id:           { type: string(64), primary: true }
+    session_data: { type: clob }	
+    time:         { type: integer(4) }
