@@ -1,5 +1,12 @@
 sbApostropheLoadBalancerPlugin
 
+*** THIS PLUGIN HAS BEEN SUPERCEDED BY NEW FEATURES IN APOSTROPHE ***
+Please see http://trac.apostrophenow.org/wiki/ManualScaling for further details
+
+
+
+
+
 Plugin allows sessions to be stored in a doctrine database so that they can be served consistently across 
 multiple server architectures.
 
